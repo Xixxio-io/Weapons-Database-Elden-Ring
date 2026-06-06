@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include "adt_list.h"
 #include "weapon.h"
+#include "repository.h"
 
 void loadDataBase(list L){
 
     FILE* fp;
-    fp = fopen("FILE_DATABASE/database.txt", "r");
+    fp = fopen("file/database.txt", "r");
 
     if(fp == NULL)
     {
@@ -34,7 +35,7 @@ void loadDataBase(list L){
 void saveDataBase(list L){
 
     FILE* fp;
-    fp = fopen("FILE_DATABASE/database.txt", "w");
+    fp = fopen("file/database.txt", "w");
 
     if(fp == NULL)
     {
