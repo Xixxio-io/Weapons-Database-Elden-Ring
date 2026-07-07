@@ -287,7 +287,7 @@ int ifExist(char* name, list L){
 
     while(tmp != NULL)
     {
-        if(strcmp(getName(getWeapon(L)), name) == 0){
+        if(strcmp(getName(getWeapon(tmp)), name) == 0){
 
             increaseQuantity(getWeapon(tmp));
             return 1;

@@ -22,6 +22,11 @@ void putInWeapon(list* L){
             printf("\nInsert the weapon's name > ");
             fgets(name, sizeof(name), stdin);
 
+            for(size_t i = 0; i < sizeof(name); i++)
+            {
+                name[i] = tolower(name[i]);
+            }
+
             if(strchr(name, '\n') == NULL)
             {
                 printf("\nYou have exceeded the maximum number of characters: (%lu)", sizeof(name) -1);
@@ -48,8 +53,8 @@ void putInWeapon(list* L){
 
                 if(ifExist(name, *L) == 1){
 
-                    printf("\nThe weapon is already insert ");
-                    printf("\nIncreasing the Quantity...");
+                    printf("\nThe weapon is already insert!\n");
+                    printf("\nIncreasing the Quantity...\n");
 
                     return;
                 }
@@ -59,10 +64,14 @@ void putInWeapon(list* L){
                     printf("\nPlease insert only Y or N!\n");
                 }
 
-            }while(choice != 'y' && choice != 'n');
-            
-        }while(choice != 'y' && choice != 'Y');
+                if(choice == 'N' || choice == 'n'){
+                    printf("\nExit...\n");
+                    return;
+                }
 
+            }while(choice != 'y' && choice != 'Y');
+
+        }while(choice != 'y' && choice != 'Y');
 
         clearScreen();
 
@@ -79,6 +88,10 @@ void putInWeapon(list* L){
             printf("\nPlease insert only Y or N!\n");
 
         }while(choice != 'y' && choice != 'n'); 
+
+        if(choice == 'N' || choice == 'n'){
+            strcpy(description, "-");
+        }
 
         /* DO-WHILE DESCRIPTION */
         if(choice == 'Y' || choice == 'y'){
@@ -173,10 +186,9 @@ void putInWeapon(list* L){
         }while(choice != 'y' && choice != 'n');
 
     }while(choice != 'Y' && choice != 'y');
-
-    W = createWeapon(name, description, category, quantity);
-    *L = insertWeapon(*L, W);
-}
+        W = createWeapon(name, description, category, quantity);
+        *L = insertWeapon(*L, W);
+    }
 
 /*
 *
@@ -191,15 +203,14 @@ void putInWeapon(list* L){
 *
 **/
 
-
 void deleteWeapon(list* L){
 
     char name[30];
 
-    if(L == NULL)
+    if(*L == NULL)
     {
-        printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
-        return;        
+        printf("\nYou don't have any registred! You can't Delete\n");
+        return;
     }
 
     do{
@@ -209,7 +220,7 @@ void deleteWeapon(list* L){
 
     }while(strlen(name) == 0);
 
-    removeWeapon(*L, name);
+    *L = removeWeapon(*L, name);
 
     printf("\nWEAPON CORRECTLY REMOVED");   
 }
@@ -217,25 +228,34 @@ void deleteWeapon(list* L){
 void viewWeapon(list* L){
 
     char name[30], category[50];
-    int choice = 0;
+    int choice;
     Weapon W;
 
-    if(L == NULL)
+    if(*L == NULL)
     {
-        printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
+        printf("\nYou don't have any weapon registred!\n");
         return;        
     }
 
-    printf("\n1. Press (1) to search a weapon by name");
-    printf("\n2. Press (2) to search a weapon by category");
-    printf("\n0. Press (0) to exit");
+    printf("\n");
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║                      SEARCH WEAPON                           ║\n");
+    printf("╠═════╦════════════════════════════════════════════════════════╣\n");
+    printf("║  1  ║ Search by Name                                         ║\n");
+    printf("║  2  ║ Search by Category                                     ║\n");
+    printf("║  0  ║ Back                                                   ║\n");
+    printf("╚═════╩════════════════════════════════════════════════════════╝\n");
+
+    printf("\nChoice > ");
+    scanf("%d", &choice);
+    getchar();
 
     switch(choice){
 
         case 1: 
 
             do{
-                printf("\nYOOOO PUT THE NAME HERE -> ");
+                printf("\nInsert the name of the weapon to research > ");
                 fgets(name, 30, stdin);
                 name[strcspn(name, "\n")] = '\0';
 
@@ -247,23 +267,16 @@ void viewWeapon(list* L){
 
         case 2:
 
-            do{
-                printf("\nYOOOO PUT THE CATEGORY HERE -> ");
-                fgets(category, 50, stdin);
-                category[strcspn(category, "\n")] = '\0';
-
-            }while(strlen(category) == 0);
-
-            W = searchWeaponbyCategory(*L, category);
+            W = searchWeaponbyCategory(*L, choose_Category(category));
             printWeapon(W);
             break;
 
         case 0:
-            printf("\nExit...");
+            printf("\nExit...\n");
             break;
 
         default:
-            printf("\nMANNNNN please press the right button");
+            printf("\nPlease select a value from (0) to (2)\n");
 
     }
 }
@@ -275,7 +288,7 @@ void completeInformation(list* L){
 
     if(tmp == NULL)
     {
-        printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
+        printf("\nYou don't have any weapon registred!\n");
         return;  
     }
 

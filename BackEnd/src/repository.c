@@ -9,9 +9,11 @@ void loadDataBase(list* L){
     FILE* fp;
     fp = fopen("BackEnd/file/database.txt", "r");
 
+    int n = 0;
+
     if(fp == NULL)
     {
-        printf("\nERRORE APERTURA FILE\n");
+        printf("\nERROR: FILE DOESN'T OPEN\n");
         return;
     }
 
@@ -21,11 +23,16 @@ void loadDataBase(list* L){
 
     while(fscanf(fp, "%99[^;]; %99[^;];%99[^;];%d", name, description, category, &quantity) == 4)
     {
+
         tmp = createWeapon(name, description, category, quantity);
-        insertWeapon(*L, tmp);
+        *L = insertWeapon(*L, tmp);
+
+        n++;
     }
 
-    printf("\nDATABASE CARICATO\n");
+    printf("Weapon Charged: %d", n);
+
+    printf("\nDATABASE CHARGED\n");
     fclose(fp);
 
     return;
@@ -37,20 +44,22 @@ void saveDataBase(list* L){
     FILE* fp;
     fp = fopen("BackEnd/file/database.txt", "w");
 
+    list tmp_L = *L;
+
     if(fp == NULL)
     {
-        printf("\nERRORE APERTURA FILE\n");
+        printf("\nERROR: FILE DOESN'T OPEN\n");
         return;
     }
 
-    while(*L != NULL)
+    while(tmp_L != NULL)
     {
-        Weapon tmp = getWeapon(*L);
+        Weapon tmp = getWeapon(tmp_L);
         fprintf(fp, "%s;%s;%s;%d\n", getName(tmp), getDescription(tmp), getCategory(tmp), getQuantity(tmp));
-        *L = getNext(*L);
+        tmp_L = getNext(tmp_L);
     }
 
-    printf("\nDATABASE AGGIORNATO\n");
+    printf("\nDATABASE UPDATED\n");
     fclose(fp);
 
     return;
@@ -63,12 +72,12 @@ void resetDataBase(){
     
     if(fp == NULL)
     {
-        printf("\nERRORE APERTURA FILE\n");
+        printf("\nERROR: FILE DOESN'T OPEN\n");
         return;
     }
 
     fclose(fp);
 
-    printf("\nDATABASE RESETTATO CORRETTAMENTE");
+    printf("\nDATABASE RESTORED");
 }
 

@@ -13,7 +13,7 @@ struct weapon
 
 Weapon createWeapon(char* name, char* description, char* category, int quantity){
 
-    Weapon W = malloc(sizeof(Weapon));
+    Weapon W = malloc(sizeof(struct weapon));
 
     /* name */
     strcpy(W->name, name);
@@ -32,13 +32,15 @@ Weapon createWeapon(char* name, char* description, char* category, int quantity)
 
 void printWeapon(Weapon W){
 
-    printf("\nName: %s", W->name);
-
-    printf("\nDescription: %s", W->description);
-
-    printf("\nCategory: %s", W->category);
-
-    printf("\nThis is the <%ss> you have: %d", W->name, W->quantity);
+    printf("\n");
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║                    ELDEN RING WEAPON                         ║\n");
+    printf("╠══════════════════════════════════════════════════════════════╣\n");
+    printf("║ Name        : %-46s ║\n", W->name);
+    printf("║ Description : %-46s ║\n", W->description);
+    printf("║ Category    : %-46s ║\n", W->category);    
+    printf("║ Category    : %-46d ║\n", W->quantity);                   
+    printf("╚══════════════════════════════════════════════════════════════╝\n");
 
     return;
 }
