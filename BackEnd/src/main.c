@@ -5,6 +5,7 @@
 #include "repository.h"
 #include "weapon.h"
 #include "UI.h"
+#include "helper.h"
 
 void main_Hub(int* choice);
 
@@ -16,6 +17,8 @@ int main(){
     loadDataBase(&L);
 
     do{
+
+        clearScreen();
 
         choice = 0;
 
@@ -53,7 +56,7 @@ int main(){
 
                 default:
             
-                    printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+                printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
             }
 
         if(choice != 0){
@@ -79,6 +82,7 @@ void main_Hub(int* choice){
 
     printf("\n--> Put here your choice: ");
     scanf("%d", choice);
+    getchar();
 
     return;
 }

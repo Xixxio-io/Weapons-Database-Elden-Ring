@@ -33,10 +33,10 @@ list insertWeapon(list L, Weapon W){
     tmp = malloc(sizeof(struct node));
 
     tmp->weapon = W;
-    tmp->next = NULL;
+    tmp->next = L;
     tmp->count = powerUpCount();
 
-    return L;
+    return tmp;
 }
 
 list removeWeapon(list L, char* name){

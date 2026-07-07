@@ -7,7 +7,7 @@
 void loadDataBase(list* L){
 
     FILE* fp;
-    fp = fopen("file/database.txt", "r");
+    fp = fopen("BackEnd/file/database.txt", "r");
 
     if(fp == NULL)
     {
@@ -35,7 +35,7 @@ void loadDataBase(list* L){
 void saveDataBase(list* L){
 
     FILE* fp;
-    fp = fopen("file/database.txt", "w");
+    fp = fopen("BackEnd/file/database.txt", "w");
 
     if(fp == NULL)
     {
@@ -59,7 +59,7 @@ void saveDataBase(list* L){
 void resetDataBase(){
 
     FILE* fp;
-    fp = fopen("file/database.txt", "w");
+    fp = fopen("BackEnd/file/database.txt", "w");
     
     if(fp == NULL)
     {

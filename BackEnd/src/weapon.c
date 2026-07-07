@@ -13,34 +13,34 @@ struct weapon
 
 Weapon createWeapon(char* name, char* description, char* category, int quantity){
 
-Weapon W = malloc(sizeof(Weapon));
+    Weapon W = malloc(sizeof(Weapon));
 
-/* name */
-strcpy(W->name, name);
+    /* name */
+    strcpy(W->name, name);
 
-/* description */
-strcpy(W->description, description);
+    /* description */
+    strcpy(W->description, description);
 
-/* category */
-strcpy(W->category, category);
+    /* category */
+    strcpy(W->category, category);
 
-/* quantity */
-W->quantity = quantity;
+    /* quantity */
+    W->quantity = quantity;
 
-return W;
+    return W;
 }
 
 void printWeapon(Weapon W){
 
-printf("\nName: %s", W->name);
+    printf("\nName: %s", W->name);
 
-printf("\nDescription: %s", W->description);
+    printf("\nDescription: %s", W->description);
 
-printf("\nCategory: %s", W->category);
+    printf("\nCategory: %s", W->category);
 
-printf("\nThis is the <%ss> you have: %d", W->name, W->quantity);
+    printf("\nThis is the <%ss> you have: %d", W->name, W->quantity);
 
-return;
+    return;
 }
 
 /* GETTER */

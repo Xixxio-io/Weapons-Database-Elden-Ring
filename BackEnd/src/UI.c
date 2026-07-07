@@ -6,7 +6,6 @@
 #include "weapon.h"
 #include "helper.h"
 
-
 void putInWeapon(list* L){
     
     char name[25], description[100], category[50];
@@ -18,21 +17,21 @@ void putInWeapon(list* L){
         fgets(name, sizeof(name), stdin);
         name[strcspn(name, "\n")] = '\0';
 
-    }while(strlen(name) != 0);
+    }while(strlen(name) == 0);
 
     do{
         printf("\nPLEASE MY N**GA PUT SOMETHING ELSE: ");
         fgets(description, sizeof(description), stdin);
         description[strcspn(description, "\n")] = '\0';
 
-    }while(strlen(description) != 0);
+    }while(strlen(description) == 0);
 
     do{
-        printf("\nYOOOOOOO GIVE ME THE CATEGORY NOW: ");
+        printf("\nYOOOOOOO choose the category now :)");
         fgets(category, sizeof(category), stdin);
         category[strcspn(category, "\n")] = '\0';
 
-    }while(strlen(category) != 0);
+    }while(strlen(category) == 0);
 
     quantity = 1;
 
@@ -55,7 +54,7 @@ void deleteWeapon(list* L){
         fgets(name, 30, stdin);
         name[strcspn(name, "\n")] = '\0';
 
-    }while(strlen(name) != 0);
+    }while(strlen(name) == 0);
 
     removeWeapon(*L, name);
 
@@ -87,7 +86,7 @@ void viewWeapon(list* L){
                 fgets(name, 30, stdin);
                 name[strcspn(name, "\n")] = '\0';
 
-            }while(strlen(name) != 0);
+            }while(strlen(name) == 0);
 
             W = searchWeaponbyName(*L, name);
             printWeapon(W);
@@ -100,7 +99,7 @@ void viewWeapon(list* L){
                 fgets(category, 50, stdin);
                 category[strcspn(category, "\n")] = '\0';
 
-            }while(strlen(category) != 0);
+            }while(strlen(category) == 0);
 
             W = searchWeaponbyCategory(*L, category);
             printWeapon(W);
@@ -133,6 +132,3 @@ void completeInformation(list* L){
         tmp = getNext(tmp);
     }
 }
-
-
-
