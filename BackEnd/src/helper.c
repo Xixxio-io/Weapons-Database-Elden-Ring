@@ -138,7 +138,7 @@ void getInfo(char* category, int countWeapon[]){
     }
 
     for(int i = 0; i < NUM_CATEGORIES; i++){
-        printf("\n%s: %d",weaponAsset[i], countWeapon[i]);
+        printf("║ %-32s %27d ║\n",weaponAsset[i], countWeapon[i]);
     }
 }
 

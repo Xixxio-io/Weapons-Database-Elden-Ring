@@ -285,6 +285,7 @@ void completeInformation(list* L){
 
     list tmp = *L;
     int countWeapon[40] = {0};
+    int totalWeapons = 0;
 
     if(tmp == NULL)
     {
@@ -292,9 +293,19 @@ void completeInformation(list* L){
         return;  
     }
 
+    clearScreen();
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║                    COMPLETE REPORT                           ║\n");
+    printf("╠══════════════════════════════════════════════════════════════╣\n");
+
     while(tmp != NULL)
     {
         getInfo(getCategory(getWeapon(tmp)), countWeapon);
         tmp = getNext(tmp);
+        totalWeapons++;
     }
+
+    printf("╠══════════════════════════════════════════════════════════════╣\n");
+    printf("║ Total Weapons%47d ║\n", totalWeapons);
+    printf("╚══════════════════════════════════════════════════════════════╝\n");
 }

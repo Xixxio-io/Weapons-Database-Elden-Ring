@@ -1,0 +1,2 @@
+greatsword;-;Greatswords;1
+nagakiba;-;Katanas;1
