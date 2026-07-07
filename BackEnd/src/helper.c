@@ -157,8 +157,6 @@ char* choose_Category(char* category){
 
         clearScreen();
 
-        printf("\nYOOOOOOO choose the category now :)\n");
-
         int choice, index;
         char string[75];
 
@@ -255,7 +253,7 @@ char* choose_Category(char* category){
                 break;
 
             default:
-            printf("\nDAMN GOD!!! Press the right button FUCK YOU!\n");
+            printf("\nInsert an option between 1 to 7 (0 to exit)\n");
         }
 
     }while(strlen(category) == 0);
@@ -283,12 +281,32 @@ void clearInputBuffer(void){
     while((c = getchar()) != '\n' && c != EOF);
 }
 
+int ifExist(char* name, list L){
+
+    list tmp = L;
+
+    while(tmp != NULL)
+    {
+        if(strcmp(getName(getWeapon(L)), name) == 0){
+
+            increaseQuantity(getWeapon(tmp));
+            return 1;
+        }
+        tmp = getNext(tmp);
+    }
+
+    return 0;
+}
+
+
+
 
 /* ORGANISATION MANU AND SUB-MENU */
 
 static void print_Weapon_Menu(){
 
     clearScreen();
+    printf("\nChoice one of the following MACRO-CATEGORIES\n");
 
     printf(
         "\n"
@@ -309,6 +327,7 @@ static void print_Weapon_Menu(){
 static void print_Swords_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -335,6 +354,7 @@ static void print_Swords_Menu(){
 static void print_HeavySword_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -355,6 +375,7 @@ static void print_HeavySword_Menu(){
 static void print_Polearms_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -375,6 +396,7 @@ static void print_Polearms_Menu(){
 static void print_FistsANDClaw_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -393,6 +415,7 @@ static void print_FistsANDClaw_Menu(){
 static void print_Ranged_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -412,6 +435,7 @@ static void print_Ranged_Menu(){
 static void print_Catalysts_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -428,6 +452,7 @@ static void print_Catalysts_Menu(){
 static void print_Utility_Menu(){
 
     clearScreen();
+    printf("\nChoose one of the following categories");
 
     printf(
         "\n"
@@ -506,7 +531,7 @@ static char* switch_FOR_Swords(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option between 1 to 12 (0 to exit)\n");
     }
 
     return string;
@@ -545,7 +570,7 @@ static char* switch_FOR_heavySword(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option between 1 to 6 (0 to exit)\n");
     }
 
     return string;
@@ -580,7 +605,7 @@ static char* switch_FOR_Polearms(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option between 1 to 5 (0 to exit)\n");
     }
 
     return string;
@@ -611,7 +636,7 @@ static char* switch_FOR_FistsANDClaw(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option between 1 to 4 (0 to exit)\n");
     }
 
     return string;
@@ -646,7 +671,7 @@ static char* switch_FOR_Ranged(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option between 1 to 5 (0 to exit)\n");
     }
 
     return string;
@@ -669,7 +694,7 @@ static char* switch_FOR_Catalysts(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option as 1 or 2 (0 to exit)\n");
     }
 
     return string;
@@ -704,7 +729,7 @@ static char* switch_FOR_Utility(int choice, char* string){
             break;
 
         default:
-        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+        printf("\nInsert an option between 1 to 5 (0 to exit)\n");
     }
 
     return string;

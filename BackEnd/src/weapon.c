@@ -60,3 +60,7 @@ char* getCategory(Weapon W){
 int getQuantity(Weapon W){
     return W->quantity;
 }
+
+void increaseQuantity(Weapon W){
+    W->quantity++;
+}

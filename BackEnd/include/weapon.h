@@ -12,4 +12,7 @@ char* getDescription(Weapon W);
 char* getCategory(Weapon W);
 int getQuantity(Weapon W);
 
+/* SETTER */
+void increaseQuantity(Weapon W);
+
 #endif

@@ -19,7 +19,7 @@ void putInWeapon(list* L){
         do{
             clearScreen();
 
-            printf("\nInsert the weapon's name: ");
+            printf("\nInsert the weapon's name > ");
             fgets(name, sizeof(name), stdin);
 
             if(strchr(name, '\n') == NULL)
@@ -39,13 +39,20 @@ void putInWeapon(list* L){
             }
 
             do{ 
-                printf("\nAre you sure to confirm: %s", name);
-                printf("\n(Y/N): ");
+                printf("\nThe name | %s | is correct?", name);
+                printf("\n(Y/N) > ");
 
                 scanf(" %c", &choice);
                 clearInputBuffer();
-
                 choice = tolower(choice);
+
+                if(ifExist(name, *L) == 1){
+
+                    printf("\nThe weapon is already insert ");
+                    printf("\nIncreasing the Quantity...");
+
+                    return;
+                }
 
                 if(choice != 'y' && choice != 'n')
                 {
@@ -60,7 +67,8 @@ void putInWeapon(list* L){
         clearScreen();
 
         do{
-            printf("\nDo you wanna add a description? (Y/N): ");
+            printf("\nDo you wanna add a description?");
+            printf("\n(Y/N) > ");
 
             scanf(" %c", &choice);
             clearInputBuffer();
@@ -78,7 +86,7 @@ void putInWeapon(list* L){
             do{
                 clearScreen();
 
-                printf("\nInsert the description: ");
+                printf("\nInsert the description > ");
                 fgets(description, sizeof(description), stdin);
 
                 if(strchr(description, '\n') == NULL)
@@ -98,8 +106,8 @@ void putInWeapon(list* L){
                 }
 
                 do{
-                    printf("\nAre you sure to confirm: %s", description);
-                    printf("\n(Y/N): ");
+                    printf("\nThe following description is correct? > %s", description);
+                    printf("\n(Y/N) > ");
 
                     scanf(" %c", &choice);
                     clearInputBuffer();
@@ -150,7 +158,7 @@ void putInWeapon(list* L){
 
         do{
             printf("\nInsert Weapon?");
-            printf("\n(Y/N): ");
+            printf("\n(Y/N) > ");
 
             scanf(" %c", &choice);
             clearInputBuffer();
@@ -171,17 +179,17 @@ void putInWeapon(list* L){
 }
 
 /*
-*   
-*FOR THE FUTURE ME
-*remebmber to insert in the function putInWeapon the option
-*yes or no for every section of the weapon, power up the 
-*UI for every section, verify if the weapon the user is going
-*to insert is already in, in that case search the weapon and 
-*increase hi quantity
-*P.S. ---BECOME PROFESSIONAL WITH THE PRINTF---
-+
-*/
-
+*
+* Mission of today
+* verify if the weapon that the user is going to insert
+* is already in. 
+* I need a function the read all the weapon's name and 
+* compare it with the weapon's name to insert.
+* The function has to return a bool, if the weapon
+* is already in i have to increase the quantity of that weapon
+* if not i continue the insert.
+*
+**/
 
 
 void deleteWeapon(list* L){

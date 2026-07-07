@@ -66,9 +66,6 @@ int main(){
 
     }while(choice != 0);
 
-
-
-
 }
 
 void main_Hub(int* choice){
@@ -85,8 +82,24 @@ void main_Hub(int* choice){
     printf("╚═════╩════════════════════════════════════════════════════════╝\n");
     printf("\nChoice > ");
 
-    scanf("%d", choice);
-    getchar();
+   while (1) 
+   {
+        if (scanf("%d", choice) != 1) {
+            printf("\nERROR: invalid input. Choose a number between 1 and 5: ");
+            clearInputBuffer();
+            continue;
+        }
+
+        if (*choice < 0 || *choice > 4) {
+            printf("\nERROR: choose a number between 1 and 5: ");
+            clearInputBuffer();
+            continue;
+        }
+
+        break;
+    }
+
+    clearInputBuffer();
 
     return;
 }
