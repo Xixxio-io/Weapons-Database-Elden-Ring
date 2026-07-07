@@ -56,7 +56,7 @@ void saveDataBase(list L){
     return;
 }
 
-void resetDataBase(list L){
+void resetDataBase(){
 
     FILE* fp;
     fp = fopen("file/database.txt", "w");

@@ -67,10 +67,9 @@ list removeWeapon(list L, char* name){
 
 Weapon searchWeapon(list L, char* name){
     
-    list tmp;
-    int found = 0;
+    list tmp = L;
 
-    if(L == NULL)
+    if(tmp == NULL)
     {
         printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
         return NULL;
@@ -80,18 +79,14 @@ Weapon searchWeapon(list L, char* name){
     {
         if(strcmp(getName(tmp->weapon), name) == 0)
         {
-            found = 1;
             return tmp->weapon;
         }
 
         tmp = tmp->next;
     }
-
-    if(found == 0)
-    {
-        printf("\nI'AM SORRY TO SAY THAT BUT YOU DON'T HAVE THAT THING");
-        return NULL;
-    }
+        
+    printf("\nI'AM SORRY TO SAY THAT BUT YOU DON'T HAVE THAT THING");
+    return NULL;
 }
 
 int getPosition(list L, char* name){

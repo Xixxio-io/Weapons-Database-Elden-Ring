@@ -9,34 +9,15 @@
 void main_Hub();
 void insertOperation_Hub();
 void removeOperation_hub();
+void completeInfo_hub();
 
 int main(){
 
-    int choice;
+    int choice = 0;
     list L = initList();
 
     loadDataBase(L);
 
     switch(choice){
-
-        case 1: 
-                putInWeapon(L);
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

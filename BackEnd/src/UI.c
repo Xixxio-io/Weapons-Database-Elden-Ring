@@ -4,6 +4,7 @@
 #include "adt_list.h"
 #include "repository.h"
 #include "weapon.h"
+#include "helper.h"
 
 
 void putInWeapon(list L){
@@ -46,7 +47,7 @@ void deleteWeaponUI(list L){
     if(L == NULL)
     {
         printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
-        return NULL;        
+        return;        
     }
 
     do{
@@ -68,7 +69,7 @@ void foundWeapon(list L){
     if(L == NULL)
     {
         printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
-        return NULL;        
+        return;        
     }
 
     do{
@@ -85,30 +86,21 @@ void foundWeapon(list L){
 
 void completeInformation(list L){
 
-    list tmp;
+    list tmp = L;
+    int countWeapon[40] = {0};
 
-    if(L == NULL)
+    if(tmp == NULL)
     {
         printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
-        return NULL;  
+        return;  
     }
 
     while(tmp != NULL)
     {
-        
-
-
-
-
-
-
+        getInfo(getCategory(getWeapon(tmp)), countWeapon);
+        tmp = getNext(tmp);
     }
-
-
-
-
-
-
-
 }
+
+
 

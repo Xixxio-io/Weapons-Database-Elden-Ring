@@ -57,6 +57,66 @@ typedef enum {
 } WeaponCategory;
 
 
+void getInfo(char* category, int countWeapon[]){
+
+    const char* weaponAsset[] = {
+        "Daggers",
+        "Straight Swords",
+        "Greatswords",
+        "Colossal Swords",
+        "Thrusting Swords",
+        "Heavy Thrusting Swords",
+        "Curved Swords",
+        "Curved Greatswords",
+        "Katanas",
+        "Great Katanas",
+        "Twinblades",
+
+        "Axes",
+        "Greataxes",
+        "Hammers",
+        "Flails",
+        "Great Hammers",
+        "Colossal Weapons",
+
+        "Spears",
+        "Great Spears",
+        "Halberds",
+        "Reapers",
+        "Whips",
+
+        "Fists",
+        "Claws",
+        "Beast Claws",
+        "Hand-to-Hand Arts",
+
+        "Light Bows",
+        "Bows",
+        "Greatbows",
+        "Crossbows",
+        "Ballistas",
+
+        "Glintstone Staffs",
+        "Sacred Seals",
+
+        "Torches",
+        "Tools",
+
+        "Thrusting Shields",
+        "Throwing Blades",
+        "Backhand Blades",
+        "Light Greatswords"
+    };
 
 
+    for(int i = 0; i < NUM_CATEGORIES; i++){
+        if(strcmp(weaponAsset[i], category) == 0){
+            countWeapon[i] += 1;
+        }
+    }
+
+    for(int i = 0; i < NUM_CATEGORIES; i++){
+        printf("%s: %d",weaponAsset[i], countWeapon[i]);
+    }
+}
 
