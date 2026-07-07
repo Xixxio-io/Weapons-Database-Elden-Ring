@@ -1,32 +1,26 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -I./BackEnd/adt_list_folder \
-                   -I./BackEnd/file_operation_folder \
-                   -I./BackEnd/helper_function_folder \
-                   -I./BackEnd/weapon_operation_folder \
-				   -I./BackEnd/UI_folder
+CFLAGS = -Wall -Wextra -I./BackEnd/include
 
 TARGET = elden_ring_tracker
 
-SRC = BackEnd/main.c \
-      BackEnd/adt_list_folder/adt_list.c \
-      BackEnd/file_operation_folder/file_operation.c \
-      BackEnd/helper_function_folder/helper.c \
-      BackEnd/weapon_operation_folder/weapon.c \
-	  BackEnd/UI_folder/UI.c 
+SRC = $(wildcard BackEnd/src/*.c)
 
-OBJ = $(SRC:.c=.o)
+OBJDIR = BackEnd/obj
+
+OBJ = $(patsubst BackEnd/src/%.c,$(OBJDIR)/%.o,$(SRC))
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET)
 
-%.o: %.c
+$(OBJDIR)/%.o: BackEnd/src/%.c
+	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(OBJDIR) $(TARGET)
 
 run: $(TARGET)
 	./$(TARGET)
