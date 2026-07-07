@@ -56,5 +56,19 @@ void saveDataBase(list L){
     return;
 }
 
+void resetDataBase(list L){
 
+    FILE* fp;
+    fp = fopen("file/database.txt", "w");
+    
+    if(fp == NULL)
+    {
+        printf("\nERRORE APERTURA FILE\n");
+        return;
+    }
+
+    fclose(fp);
+
+    printf("\nDATABASE RESETTATO CORRETTAMENTE");
+}
 

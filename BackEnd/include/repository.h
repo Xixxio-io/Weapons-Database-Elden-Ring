@@ -4,5 +4,6 @@
 
 void loadDataBase(list L);
 void saveDataBase(list L);
+void resetDataBase(list L);
 
 #endif

@@ -6,10 +6,11 @@
 #include "weapon.h"
 
 
-void PutInWeapon(){
+void putInWeapon(list L){
     
     char name[25], description[100], category[50];
     int quantity;
+    Weapon W;
 
     do{
         printf("\nPUT THE FUCKING NAME HERE (pls!): ");
@@ -34,5 +35,80 @@ void PutInWeapon(){
 
     quantity = 1;
 
-    createWeapon(name, description, category, quantity);
+    W = createWeapon(name, description, category, quantity);
+    insertWeapon(L, W);
 }
+
+void deleteWeaponUI(list L){
+
+    char name[30];
+
+    if(L == NULL)
+    {
+        printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
+        return NULL;        
+    }
+
+    do{
+        printf("\nYOOOO PUT THE NAME HERE -> ");
+        fgets(name, 30, stdin);
+        name[strcspn(name, "\n")] = '\0';
+
+    }while(strlen(name) != 0);
+
+    removeWeapon(L, name);
+
+    printf("\nWEAPON CORRECTLY REMOVED");   
+}
+
+void foundWeapon(list L){
+
+    char name[30];
+
+    if(L == NULL)
+    {
+        printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
+        return NULL;        
+    }
+
+    do{
+        printf("\nYOOOO PUT THE NAME HERE -> ");
+        fgets(name, 30, stdin);
+        name[strcspn(name, "\n")] = '\0';
+
+    }while(strlen(name) != 0);
+
+    searchWeapon(L, name);
+
+    printWeapon(getWeapon(L));
+}
+
+void completeInformation(list L){
+
+    list tmp;
+
+    if(L == NULL)
+    {
+        printf("\nTHERE ARE NO WEAPON WHAT A FUCKKKK!!!");
+        return NULL;  
+    }
+
+    while(tmp != NULL)
+    {
+        
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+}
+
