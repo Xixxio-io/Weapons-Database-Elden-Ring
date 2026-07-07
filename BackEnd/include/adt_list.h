@@ -7,7 +7,8 @@ typedef struct node* list;
 list initList();
 list insertWeapon(list L, Weapon W);
 list removeWeapon(list L, char* name);
-Weapon searchWeapon(list L, char* name);
+Weapon searchWeaponbyName(list L, char* name);
+Weapon searchWeaponbyCategory(list L, char* category);
 void printALL(list L);
 
 /* GETTER */

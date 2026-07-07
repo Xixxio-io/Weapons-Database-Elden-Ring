@@ -2,8 +2,9 @@
 #define UI_H
 #include "adt_list.h"
 
-void putInWeapon(list l);
-void deleteWeaponUI(list L);
-void foundWeapon(list L);
+void putInWeapon(list* L);
+void deleteWeapon(list* L);
+void viewWeapon(list* L);
+void completeInformation(list* L);
 
 #endif

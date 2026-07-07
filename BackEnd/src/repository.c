@@ -4,7 +4,7 @@
 #include "weapon.h"
 #include "repository.h"
 
-void loadDataBase(list L){
+void loadDataBase(list* L){
 
     FILE* fp;
     fp = fopen("file/database.txt", "r");
@@ -22,7 +22,7 @@ void loadDataBase(list L){
     while(fscanf(fp, "%99[^;]; %99[^;];%99[^;];%d", name, description, category, &quantity) == 4)
     {
         tmp = createWeapon(name, description, category, quantity);
-        insertWeapon(L, tmp);
+        insertWeapon(*L, tmp);
     }
 
     printf("\nDATABASE CARICATO\n");
@@ -32,7 +32,7 @@ void loadDataBase(list L){
 }
 
 
-void saveDataBase(list L){
+void saveDataBase(list* L){
 
     FILE* fp;
     fp = fopen("file/database.txt", "w");
@@ -43,11 +43,11 @@ void saveDataBase(list L){
         return;
     }
 
-    while(L != NULL)
+    while(*L != NULL)
     {
-        Weapon tmp = getWeapon(L);
+        Weapon tmp = getWeapon(*L);
         fprintf(fp, "%s;%s;%s;%d\n", getName(tmp), getDescription(tmp), getCategory(tmp), getQuantity(tmp));
-        L = getNext(L);
+        *L = getNext(*L);
     }
 
     printf("\nDATABASE AGGIORNATO\n");
