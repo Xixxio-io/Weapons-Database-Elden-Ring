@@ -73,14 +73,18 @@ int main(){
 
 void main_Hub(int* choice){
 
+    printf("\n");
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║                    ELDEN RING DATABASE                       ║\n");
+    printf("╠═════╦════════════════════════════════════════════════════════╣\n");
+    printf("║  1  ║ Insert Weapon                                          ║\n");
+    printf("║  2  ║ Remove Weapon                                          ║\n");
+    printf("║  3  ║ Search Weapon                                          ║\n");
+    printf("║  4  ║ Complete Report                                        ║\n");
+    printf("║  0  ║ Exit                                                   ║\n");
+    printf("╚═════╩════════════════════════════════════════════════════════╝\n");
+    printf("\nChoice > ");
 
-    printf("\n1. Press (1) to insert the weapon in the database");
-    printf("\n2. Press (2) to remove a weapon [ I will need the name :) ]");
-    printf("\n3. Press (3) to view a weapon/s chosed by u");
-    printf("\n4. Press (4) to receive a complete report");
-    printf("\n0. Press (0) to exit");
-
-    printf("\n--> Put here your choice: ");
     scanf("%d", choice);
     getchar();
 

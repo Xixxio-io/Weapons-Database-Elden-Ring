@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "adt_list.h"
 #include "repository.h"
 #include "weapon.h"
@@ -14,38 +15,159 @@ void putInWeapon(list* L){
 
     do{
 
+        /* DO-WHILE NAME */
         do{
-            printf("\nPUT THE FUCKING NAME HERE (pls!): ");
+            clearScreen();
+
+            printf("\nInsert the weapon's name: ");
             fgets(name, sizeof(name), stdin);
+
+            if(strchr(name, '\n') == NULL)
+            {
+                printf("\nYou have exceeded the maximum number of characters: (%lu)", sizeof(name) -1);
+                clearInputBuffer();
+
+                continue;
+            }
+
             name[strcspn(name, "\n")] = '\0';
 
-        }while(strlen(name) == 0);
+            if(strlen(name) == 0){
+
+                printf("\nThe string is empty!");
+                continue;
+            }
+
+            do{ 
+                printf("\nAre you sure to confirm: %s", name);
+                printf("\n(Y/N): ");
+
+                scanf(" %c", &choice);
+                clearInputBuffer();
+
+                choice = tolower(choice);
+
+                if(choice != 'y' && choice != 'n')
+                {
+                    printf("\nPlease insert only Y or N!\n");
+                }
+
+            }while(choice != 'y' && choice != 'n');
+            
+        }while(choice != 'y' && choice != 'Y');
+
+
+        clearScreen();
 
         do{
-            printf("\nPLEASE MY N**GA PUT SOMETHING ELSE: ");
-            fgets(description, sizeof(description), stdin);
-            description[strcspn(description, "\n")] = '\0';
+            printf("\nDo you wanna add a description? (Y/N): ");
 
-        }while(strlen(description) == 0);
+            scanf(" %c", &choice);
+            clearInputBuffer();
 
-        choose_Category(category);
+            choice = tolower(choice);
+
+            if(choice != 'y' && choice != 'n')
+            printf("\nPlease insert only Y or N!\n");
+
+        }while(choice != 'y' && choice != 'n'); 
+
+        /* DO-WHILE DESCRIPTION */
+        if(choice == 'Y' || choice == 'y'){
+
+            do{
+                clearScreen();
+
+                printf("\nInsert the description: ");
+                fgets(description, sizeof(description), stdin);
+
+                if(strchr(description, '\n') == NULL)
+                {
+                    printf("\nYou have exceeded the maximum number of characters: (%lu)", sizeof(description) -1);
+                    clearInputBuffer();
+
+                    continue;
+                }
+
+                description[strcspn(description, "\n")] = '\0';
+
+                if(strlen(description) == 0)
+                {
+                    printf("\nThe string is empty!");
+                    continue;
+                }
+
+                do{
+                    printf("\nAre you sure to confirm: %s", description);
+                    printf("\n(Y/N): ");
+
+                    scanf(" %c", &choice);
+                    clearInputBuffer();
+
+                    choice = tolower(choice);
+
+                    if(choice != 'y' && choice != 'n')
+                    printf("\nPlease insert only Y or N!\n");
+                }while(choice != 'y' && choice != 'n');
+
+            }while(choice != 'y' && choice != 'Y');
+        }    
+
+        /* DO-WHILE CATEGORY */
+        do{
+            clearScreen();
+            choose_Category(category);
+           
+            do{
+                printf("\nAre you sure to confirm: %s", category);
+                printf("\n(Y/N): ");
+
+                scanf(" %c", &choice);
+                clearInputBuffer();
+
+                choice = tolower(choice);
+
+                if(choice != 'y' && choice != 'n')
+                {
+                printf("\nPlease insert only Y or N!\n");
+                }
+
+            }while(choice != 'y' && choice != 'n');
+
+        }while(choice != 'y' && choice != 'Y');
 
         quantity = 1;
 
-        printf("\n=== WEAPON SUMMARY ===\n");
-        printf("Name: %s\n", name);
-        printf("Description: %s\n", description);
-        printf("Category: %s\n", category);
+        clearScreen();
+        printf("\n");
+        printf("╔══════════════════════════════════════════════════════════════╗\n");
+        printf("║                    ELDEN RING WEAPON                         ║\n");
+        printf("╠══════════════════════════════════════════════════════════════╣\n");
+        printf("║ Name        : %-46s ║\n", name);
+        printf("║ Description : %-46s ║\n", description);
+        printf("║ Category    : %-46s ║\n", category);                         
+        printf("╚══════════════════════════════════════════════════════════════╝\n");
 
-        printf("\nInsert Weapon? (Y/N): ");
-        scanf(" %c", &choice);
-        getchar();
+        do{
+            printf("\nInsert Weapon?");
+            printf("\n(Y/N): ");
+
+            scanf(" %c", &choice);
+            clearInputBuffer();
+
+            choice = tolower(choice);
+
+            if(choice != 'y' && choice != 'n')
+            {
+                printf("\nPlease insert only Y or N!\n");
+            }
+
+        }while(choice != 'y' && choice != 'n');
 
     }while(choice != 'Y' && choice != 'y');
 
     W = createWeapon(name, description, category, quantity);
     *L = insertWeapon(*L, W);
-
 }
 
 /*

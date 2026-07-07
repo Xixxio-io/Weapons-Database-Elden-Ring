@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "adt_list.h"
 #include "repository.h"
 #include "weapon.h"
@@ -162,7 +163,7 @@ char* choose_Category(char* category){
         char string[75];
 
         print_Weapon_Menu();
-        printf( "Put the choice right here --> ");
+        printf("\nchoice > ");
         scanf("%d", &choice);
         getchar();
 
@@ -172,7 +173,7 @@ char* choose_Category(char* category){
             case 1: 
 
                 print_Swords_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
                 
                 scanf("%d", &index);
                 getchar();
@@ -184,7 +185,7 @@ char* choose_Category(char* category){
             case 2: 
 
                 print_HeavySword_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
 
                 scanf("%d", &index);
                 getchar();
@@ -196,7 +197,7 @@ char* choose_Category(char* category){
             case 3:
 
                 print_Polearms_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
 
                 scanf("%d", &index);
                 getchar();
@@ -208,7 +209,7 @@ char* choose_Category(char* category){
             case 4:
 
                 print_FistsANDClaw_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
 
                 scanf("%d", &index);
                 getchar();
@@ -220,7 +221,7 @@ char* choose_Category(char* category){
             case 5:
 
                 print_Ranged_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
 
                 scanf("%d", &index);
                 getchar();
@@ -232,7 +233,7 @@ char* choose_Category(char* category){
             case 6:
 
                 print_Catalysts_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
 
                 scanf("%d", &index);
                 getchar();
@@ -244,7 +245,7 @@ char* choose_Category(char* category){
             case 7:
 
                 print_Utility_Menu();
-                printf("Put the choice right here --> ");
+                printf("choice > ");
 
                 scanf("%d", &index);
                 getchar();
@@ -262,12 +263,35 @@ char* choose_Category(char* category){
     return category;
 }
 
+int isValidName(const char *str){
+
+    while(*str){
+
+        if(!isalpha(*str) && *str != ' ')
+            return 0;
+
+        str++;
+    }
+
+    return 1;
+}
+
+void clearInputBuffer(void){
+
+    int c;
+
+    while((c = getchar()) != '\n' && c != EOF);
+}
+
 
 /* ORGANISATION MANU AND SUB-MENU */
 
 static void print_Weapon_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║      WEAPON CATEGORIES       ║\n"
         "╠══════════════════════════════╣\n"
@@ -284,7 +308,10 @@ static void print_Weapon_Menu(){
 }
 static void print_Swords_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║           SWORDS             ║\n"
         "╠══════════════════════════════╣\n"
@@ -307,7 +334,10 @@ static void print_Swords_Menu(){
 }
 static void print_HeavySword_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║       HEAVY WEAPONS          ║\n"
         "╠══════════════════════════════╣\n"
@@ -324,7 +354,10 @@ static void print_HeavySword_Menu(){
 }
 static void print_Polearms_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║          POLEARMS            ║\n"
         "╠══════════════════════════════╣\n"
@@ -341,7 +374,10 @@ static void print_Polearms_Menu(){
 }
 static void print_FistsANDClaw_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║       FISTS & CLAWS          ║\n"
         "╠══════════════════════════════╣\n"
@@ -356,7 +392,10 @@ static void print_FistsANDClaw_Menu(){
 }
 static void print_Ranged_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║       RANGED WEAPONS         ║\n"
         "╠══════════════════════════════╣\n"
@@ -372,7 +411,10 @@ static void print_Ranged_Menu(){
 }
 static void print_Catalysts_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║       MAGIC CATALYSTS        ║\n"
         "╠══════════════════════════════╣\n"
@@ -385,7 +427,10 @@ static void print_Catalysts_Menu(){
 }
 static void print_Utility_Menu(){
 
+    clearScreen();
+
     printf(
+        "\n"
         "╔══════════════════════════════╗\n"
         "║           UTILITY            ║\n"
         "╠══════════════════════════════╣\n"

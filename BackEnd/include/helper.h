@@ -2,7 +2,8 @@
 #define HELPER_H
 
 void getInfo(char* category, int countWeapon[]);
-void clearScreen(void);
+void clearScreen();
 char* choose_Category(char* category);
+void clearInputBuffer();
 
 #endif
