@@ -16,6 +16,16 @@ static void print_Ranged_Menu();
 static void print_Catalysts_Menu();
 static void print_Utility_Menu();
 
+/* SWITCH FOR EACH MENU */
+
+static char* switch_FOR_Swords(int choice, char* string);
+static char* switch_FOR_heavySword(int choice, char* string);
+static char* switch_FOR_Polearms(int choice, char* string);
+static char* switch_FOR_FistsANDClaw(int choice, char* string);
+static char* switch_FOR_Ranged(int choice, char* string);
+static char* switch_FOR_Catalysts(int choice, char* string);
+static char* switch_FOR_Utility(int choice, char* string);
+
 typedef enum {
     DAGGERS,
     STRAIGHT_SWORDS,
@@ -144,9 +154,12 @@ char* choose_Category(char* category){
 
     do{
 
-        printf("\nYOOOOOOO choose the category now :)");
+        clearScreen();
 
-        int choice;
+        printf("\nYOOOOOOO choose the category now :)\n");
+
+        int choice, index;
+        char string[75];
 
         print_Weapon_Menu();
         printf( "Put the choice right here --> ");
@@ -160,7 +173,11 @@ char* choose_Category(char* category){
 
                 print_Swords_Menu();
                 printf("Put the choice right here --> ");
-            
+                
+                scanf("%d", &index);
+                getchar();
+
+                strcpy(category, switch_FOR_Swords(index, string));
 
                 break;
 
@@ -169,6 +186,10 @@ char* choose_Category(char* category){
                 print_HeavySword_Menu();
                 printf("Put the choice right here --> ");
 
+                scanf("%d", &index);
+                getchar();
+
+                strcpy(category, switch_FOR_heavySword(index, string));
 
                 break;
 
@@ -177,6 +198,10 @@ char* choose_Category(char* category){
                 print_Polearms_Menu();
                 printf("Put the choice right here --> ");
 
+                scanf("%d", &index);
+                getchar();
+
+                strcpy(category, switch_FOR_Polearms(index, string));
 
                 break;
 
@@ -185,6 +210,10 @@ char* choose_Category(char* category){
                 print_FistsANDClaw_Menu();
                 printf("Put the choice right here --> ");
 
+                scanf("%d", &index);
+                getchar();
+
+                strcpy(category, switch_FOR_FistsANDClaw(index, string));
 
                 break;
 
@@ -193,6 +222,10 @@ char* choose_Category(char* category){
                 print_Ranged_Menu();
                 printf("Put the choice right here --> ");
 
+                scanf("%d", &index);
+                getchar();
+
+                strcpy(category, switch_FOR_Ranged(index, string));
 
                 break;
 
@@ -201,6 +234,10 @@ char* choose_Category(char* category){
                 print_Catalysts_Menu();
                 printf("Put the choice right here --> ");
 
+                scanf("%d", &index);
+                getchar();
+
+                strcpy(category, switch_FOR_Catalysts(index, string));
 
                 break;
 
@@ -209,16 +246,15 @@ char* choose_Category(char* category){
                 print_Utility_Menu();
                 printf("Put the choice right here --> ");
 
+                scanf("%d", &index);
+                getchar();
 
-                break;
+                strcpy(category, switch_FOR_Utility(index, string));
 
-            case 0:
-                
-                printf("\nExit...");
                 break;
 
             default:
-            printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+            printf("\nDAMN GOD!!! Press the right button FUCK YOU!\n");
         }
 
     }while(strlen(category) == 0);
@@ -243,7 +279,6 @@ static void print_Weapon_Menu(){
         "║ 6. Magic Catalysts           ║\n"
         "║ 7. Utility                   ║\n"
         "║                              ║\n"
-        "║ 0. Back                      ║\n"
         "╚══════════════════════════════╝\n"
     );
 }
@@ -368,14 +403,265 @@ static void print_Utility_Menu(){
 
 /* SWITCH FOR EACH MENU */
 
-/*
-*
-* FOR THE FUTURE ME 
-* make the functions that create the switch of each sub-menu
-* each function has to return back an char* [strings]
-* when the strings return back to the "choose_Category" function
-* save the string into an array of string "category" passed as a paramater
-* to the function. Next close the function and push back the category to the function "putInWeapon"
-*
-*/
+static char* switch_FOR_Swords(int choice, char* string){
 
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Daggers");
+            break;
+
+        case 2:
+            strcpy(string, "Straight Swords");
+            break;
+
+        case 3:
+            strcpy(string, "Greatswords");
+            break;
+
+        case 4:
+            strcpy(string, "Colossal Swords");
+            break;
+
+        case 5:
+            strcpy(string, "Thrusting Swords");
+            break;
+
+        case 6:
+            strcpy(string, "Heavy Thrusting Swords");
+            break;
+
+        case 7:
+            strcpy(string, "Curved Swords");
+            break;
+
+        case 8:
+            strcpy(string, "Curved Greatswords");
+            break;
+
+        case 9:
+            strcpy(string, "Katanas");
+            break;
+
+        case 10:
+            strcpy(string, "Great Katanas");
+            break;
+
+        case 11:
+            strcpy(string, "Twinblades");
+            break;
+
+        case 12:
+            strcpy(string, "Light Greatswords");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+}
+static char* switch_FOR_heavySword(int choice, char* string){
+
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Axes");
+            break;
+
+        case 2:
+            strcpy(string, "Greataxes");
+            break;
+
+        case 3:
+            strcpy(string, "Hammers");
+            break;
+
+        case 4:
+            strcpy(string, "Flails");
+            break;
+
+        case 5:
+            strcpy(string, "Great Hammers");
+            break;
+
+        case 6:
+            strcpy(string, "Colossal Weapons");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+}
+static char* switch_FOR_Polearms(int choice, char* string){
+
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Spears");
+            break;
+
+        case 2:
+            strcpy(string, "Great Spears");
+            break;
+
+        case 3:
+            strcpy(string, "Halberds");
+            break;
+
+        case 4:
+            strcpy(string, "Reapers");
+            break;
+
+        case 5:
+            strcpy(string, "Whips");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+}
+static char* switch_FOR_FistsANDClaw(int choice, char* string){
+
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Fists");
+            break;
+
+        case 2:
+            strcpy(string, "Claws");
+            break;
+
+        case 3:
+            strcpy(string, "Beast Claws");
+            break;
+
+        case 4:
+            strcpy(string, "Hand-to-Hand Arts");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+}
+static char* switch_FOR_Ranged(int choice, char* string){
+
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Light Bows");
+            break;
+
+        case 2:
+            strcpy(string, "Bows");
+            break;
+
+        case 3:
+            strcpy(string, "Greatbows");
+            break;
+
+        case 4:
+            strcpy(string, "Crossbows");
+            break;
+
+        case 5:
+            strcpy(string, "Ballistas");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+}
+static char* switch_FOR_Catalysts(int choice, char* string){
+
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Glintstone Staffs");
+            break;
+
+        case 2:
+            strcpy(string, "Sacred Seals");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+}
+static char* switch_FOR_Utility(int choice, char* string){
+
+    switch(choice)
+    {
+        case 1:
+            strcpy(string, "Torches");
+            break;
+
+        case 2:
+            strcpy(string, "Tools");
+            break;
+
+        case 3:
+            strcpy(string, "Thrusting Shields");
+            break;
+
+        case 4:
+            strcpy(string, "Throwing Blades");
+            break;
+
+        case 5:
+            strcpy(string, "Backhand Blades");
+            break;
+
+        case 0:
+            printf("\npress ENTER to return back...");
+            getchar();
+            break;
+
+        default:
+        printf("\nDAMN GOD!!! Press the right button FUCK YOU!");
+    }
+
+    return string;
+
+}

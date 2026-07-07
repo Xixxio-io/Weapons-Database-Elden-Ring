@@ -8,36 +8,59 @@
 
 void putInWeapon(list* L){
     
-    char name[25], description[100], category[50];
+    char name[25], description[100], category[50], choice;
     int quantity;
     Weapon W;
 
     do{
-        printf("\nPUT THE FUCKING NAME HERE (pls!): ");
-        fgets(name, sizeof(name), stdin);
-        name[strcspn(name, "\n")] = '\0';
 
-    }while(strlen(name) == 0);
+        do{
+            printf("\nPUT THE FUCKING NAME HERE (pls!): ");
+            fgets(name, sizeof(name), stdin);
+            name[strcspn(name, "\n")] = '\0';
 
-    do{
-        printf("\nPLEASE MY N**GA PUT SOMETHING ELSE: ");
-        fgets(description, sizeof(description), stdin);
-        description[strcspn(description, "\n")] = '\0';
+        }while(strlen(name) == 0);
 
-    }while(strlen(description) == 0);
+        do{
+            printf("\nPLEASE MY N**GA PUT SOMETHING ELSE: ");
+            fgets(description, sizeof(description), stdin);
+            description[strcspn(description, "\n")] = '\0';
 
-    do{
-        printf("\nYOOOOOOO choose the category now :)");
-        fgets(category, sizeof(category), stdin);
-        category[strcspn(category, "\n")] = '\0';
+        }while(strlen(description) == 0);
 
-    }while(strlen(category) == 0);
+        choose_Category(category);
 
-    quantity = 1;
+        quantity = 1;
+
+        printf("\n=== WEAPON SUMMARY ===\n");
+        printf("Name: %s\n", name);
+        printf("Description: %s\n", description);
+        printf("Category: %s\n", category);
+
+        printf("\nInsert Weapon? (Y/N): ");
+        scanf(" %c", &choice);
+        getchar();
+
+    }while(choice != 'Y' && choice != 'y');
 
     W = createWeapon(name, description, category, quantity);
     *L = insertWeapon(*L, W);
+
 }
+
+/*
+*   
+*FOR THE FUTURE ME
+*remebmber to insert in the function putInWeapon the option
+*yes or no for every section of the weapon, power up the 
+*UI for every section, verify if the weapon the user is going
+*to insert is already in, in that case search the weapon and 
+*increase hi quantity
+*P.S. ---BECOME PROFESSIONAL WITH THE PRINTF---
++
+*/
+
+
 
 void deleteWeapon(list* L){
 
